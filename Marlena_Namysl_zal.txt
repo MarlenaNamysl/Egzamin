@@ -1,0 +1,43 @@
+1. select
+	e.firstName,
+    e.lastName,
+    country, 
+    count(*) ilosc_klientow
+    from employees e join customers c on e.employeeNumber = c.salesRepEmployeeNumber
+				  
+group by 
+	e.firstName,
+    e.lastName,
+    country
+
+2. -----------------
+select
+p.productName,
+year(orderDate) rok, 
+count(*) ile
+from orders o join orderdetails d on o.orderNumber = d.orderNumber
+join products p on d.productCode = p.productCode
+
+where productName like '1969 H%'
+group by productName
+
+
+----------------------------
+select 
+p.productName,
+sum(priceEach*quantityOrdered) kwota
+from products p join orderdetails o on p.productCode = o.productCode
+where productName like '1969 H%'
+group by productName
+
+---------------------
+select
+l.productLine,
+count(*),
+p.productName
+
+3.https://github.com/MarlenaNamysl/Egzamin.git
+
+from products p join productlines l on p.productLine = l.productLine
+where productLine >10
+group by productLine
